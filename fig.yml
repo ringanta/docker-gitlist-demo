@@ -1,0 +1,13 @@
+web:
+    build: gitlist-nginx
+    ports:
+        - '8080:80'
+    links:
+        - app:fpm-backend
+    volumes_from:
+        - app
+
+app:
+    build: gitlist-fpm
+    volumes:
+        - repositories:/var/www/repositories
